@@ -1,4 +1,5 @@
 # Hackathon WCS avril 2019 - 26h : 1er prix
+Durée : 26h
 
 Thème donné : Pâques. 
 
