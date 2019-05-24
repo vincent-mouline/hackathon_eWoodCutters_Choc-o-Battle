@@ -32,13 +32,22 @@ class BattleController extends AbstractController
      */
     public function index()
     {
+        $playerNext = 1;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['player_next'])) {
+                $playerNext = $_POST['player_next'];
+                if ($playerNext == 2) {
+                    $playerNext = 1;
+                } else {
+                    $playerNext = 2;
+                }
+            };
+        }
 
         $playerManager = new PlayerManager;
         $players = $playerManager->selectAll();
 
         $objectManager = new ObjectManager();
-        $bag1= $objectManager->getBag(1);
-        $bag2= $objectManager->getBag(2);
         $milkPlayer1 = $objectManager->getCountMilk(1);
         $milkPlayer2 = $objectManager->getCountMilk(2);
         $chocolatePlayer1 = $objectManager->getCountChocolate(1);
@@ -47,18 +56,19 @@ class BattleController extends AbstractController
         $eggPlayer2 = $objectManager->getCountEgg(2);
 
 
-
         $map = new Map(12, 12, 3, 6, 4, 3);
 
         $mapCells = $map->getAllCells();
 
-        return $this->twig->render('battle/index.html.twig', [
+
+        return $this->twig->render('Battle/index.html.twig', [
             'map' => $map,
             'cells' => $mapCells,
             'players' => $players,
-            'player_id'=> 2,
-        'player1'=> ['milk' => $milkPlayer1, 'chocolate' => $chocolatePlayer1, 'egg' => $eggPlayer1, 'bag' => $bag1],
-        'player2'=> ['milk' => $milkPlayer2, 'chocolate' => $chocolatePlayer2, 'egg' => $eggPlayer2, 'bag' => $bag2]
+            'player_id' => $playerNext,
+            'player1' => ['milk' => $milkPlayer1, 'chocolate' => $chocolatePlayer1, 'egg' => $eggPlayer1],
+            'player2' => ['milk' => $milkPlayer2, 'chocolate' => $chocolatePlayer2, 'egg' => $eggPlayer2],
+            'content' => false,
         ]);
     }
 }

@@ -9,12 +9,14 @@ use Twig\Loader\FilesystemLoader;
 use App\Service\Player;
 use App\Model\ObjectManager;
 use App\Service\Egg;
+use App\Controller\CellController;
 
 class CellContent
 {
     private $twig;
     private $content_type_id;
     private $player_id;
+    private $object_id;
 
     const TABLE = 'object';
 
@@ -22,6 +24,25 @@ class CellContent
     {
         $this->content_type_id=$content_type_id;
         $this->player_id=$player_id;
+        $this->object_id = 0;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getObjectId()
+    {
+        return $this->object_id;
+    }
+
+    /**
+     * @param mixed $object_id
+     */
+    public function setObjectId($object_id): void
+    {
+        $this->object_id = $object_id;
     }
 
     /**
@@ -60,13 +81,13 @@ class CellContent
     {
         switch ($this->content_type_id) {
             case 1:
-                $this->addEgg();
+                $this->object_id = $this->addEgg();
                 break;
             case 2:
-                $this->addMilk();
+                $this->object_id = $this->addMilk();
                 break;
             case 3:
-                $this->addChoco();
+                $this->object_id = $this->addChoco();
                 break;
             case 4:
                 $this->deleteObject();
@@ -112,22 +133,21 @@ class CellContent
         $objectManager = new ObjectManager();
         $objects = $objectManager->selectAllPlayerObjects($this->player_id);
         shuffle($objects);
-        $id = $objects[0]['id'];
-        $objectManager->delete($id);
+
+        if (!empty($objects)) {
+            $id = $objects[0]['id'];
+            $objectManager->delete($id);
+        }
     }
 
+    /**
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     private function win()
     {
-        $loader = new FilesystemLoader(APP_VIEW_PATH);
-        $this->twig = new Environment(
-            $loader,
-            [
-                'cache' => !APP_DEV,
-                'debug' => APP_DEV,
-            ]
-        );
-        $this->twig->addExtension(new DebugExtension());
-
-        return $this->twig->render('Home/config.html.twig', ['win' => true]);
+        header('Location: /Home/win');
     }
 }

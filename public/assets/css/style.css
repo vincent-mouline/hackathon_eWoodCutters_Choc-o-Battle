@@ -24,6 +24,10 @@ h1 {
     float: right;
 }
 
+.menu_left {
+    float: left ;
+}
+
 .menu_dropdown{
     background-color: #feb81c;
     border: none;
@@ -52,6 +56,24 @@ h1 {
     margin: 1.5rem;
 }
 
+
+.card1 {
+    background: #feb81c;
+}
+.card2 {
+    background: #c62b29;
+}
+.card3 {
+    background: #49a790;
+}
+.card4 {
+    background: #1d5ea0;
+}
+
+
+
+
+
 .card h2 {
     text-align: center;
     font-family: 'retro', sans-serif;
@@ -79,7 +101,7 @@ h1 {
 }
 
 .card_border1{
-    border: 0.5px solid #49a790;
+    border: 0.5px solid #c62b29;
 }
 .card_border2 {
     border: 0.5px solid #feb81c;
@@ -265,7 +287,14 @@ table{
 }
 
 .btn-yellow{
-    background-color: #feb81c;
+    background-color: #ffffff;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-family: 'retro', sans-serif;
+    font-size: 40px;
+    color: #c62b29;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .btn-dark{
@@ -292,25 +321,28 @@ table tr{
 /* -------------- CARD CONFIG --------------*/
 .class-picture {
     margin-top: 20px;
-    height: 80px;
+    height: 60px;
     width: auto;
 }
 
 .card-config {
     width: 1300px;
     height: auto;
+    margin-top: -80px;
 }
 
 .card_title_player{
     font-family: 'retro', serif;
     text-transform: capitalize;
     font-size: 50px;
+
 }
 
 .card_title_text{
     font-family: 'retro', serif;
     text-transform: capitalize;
     font-size: 30px;
+    margin-bottom: 0;
 }
 
 .card_emplacement{
@@ -319,7 +351,7 @@ table tr{
 
 .center_card_player {
     position: absolute;
-    top: 130px;
+    top: 200px;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
 }
@@ -366,11 +398,11 @@ video.full_opacity{
 }
 
 .choose_perso_title{
-    margin-top: 150px;
+    margin-top: 100px;
     position: relative;
     width: 70%;
     top: 0%;
-    left: 50%;
+    left: 40%;
     -webkit-transform: translate(-50%, -50%);
 }
 
@@ -526,8 +558,85 @@ h1{
     background: blue;
 }
 
-.player_locate {
-    border: 2px solid #c62b29;
+
+.card-player-light {
+    opacity: .5;
+}
+.card-player-playin {
+    border-width: 5px;
+    border-color: black;
 }
 
+.player_locate {
+    border: 2px solid #c62b29;
+
+}
+
+
+
+.btn-item-next{
+    background-color: blue;
+    padding: 10px 50px;
+    border-radius: 20px;
+    color: crimson;
+    font-size: 40px;
+}
+
+.end_file {
+    background-image: url("/assets/images/end_img_file.gif");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+.card_battle_final{
+    margin-top: 210px;
+}
+
+.h1_endfile{
+    padding-top: 150px;
+    font-size: 150px;
+    color: #1d5ea0;
+    -webkit-animation: color-change 1.5s infinite;
+    -moz-animation: color-change 1.5s infinite;
+    -o-animation: color-change 1.5s infinite;
+    -ms-animation: color-change 1.5s infinite;
+    animation: color-change 1.5s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% { color: #1d5ea0; }
+    25% { color: #49a790; }
+    50% { color: #c62b29; }
+    75% { color: #feb81c; }
+}
+@-moz-keyframes color-change {
+    0% { color: #1d5ea0; }
+    25% { color: #49a790; }
+    50% { color: #c62b29; }
+    75% { color: #feb81c; }
+}
+
+@-ms-keyframes color-change {
+    0% { color: #1d5ea0; }
+    25% { color: #49a790; }
+    50% { color: #c62b29; }
+    75% { color: #feb81c; }
+}
+
+@-o-keyframes color-change {
+    0% { color: #1d5ea0; }
+    25% { color: #49a790; }
+    50% { color: #c62b29; }
+    75% { color: #feb81c; }
+}
+
+@keyframes color-change {
+    0% { color: #1d5ea0; }
+    25% { color: #49a790; }
+    50% { color: #c62b29; }
+    75% { color: #feb81c; }
+}
+
+.btn-item-next .play_link {
+    text-decoration: none;
+}
 

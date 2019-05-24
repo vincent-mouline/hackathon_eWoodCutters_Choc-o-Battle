@@ -1,4 +1,4 @@
-<div class="card card_border{{ player.id }}">
+<div class="card card_border{{ player.id }} {% if player_id != player.id  %} card-player-light {% else  %} card-player-playin {% endif %}">
     <div class="additional additional{{ player.id }}">
         <div class="user-card user_card_size">
             <div class="level center">
@@ -9,7 +9,7 @@
 {% if player.kind == "caid" %}/assets/images/biceps.png
 {% elseif player.kind == "intello"%}/assets/images/lunettes.png
 {% elseif player.kind == "sportif"%}/assets/images/exercice.png
-{% elseif player.kind == "vegan"%}/assets/images/nouriture_nat.png
+{% elseif player.kind == "vegan"%}/assets/images/nourriture_nat.png
 {% endif%}" alt="logo du perso">
             </div>
             <img class="user-picture" src="{{ player.picture }}" alt="image du joueur">
